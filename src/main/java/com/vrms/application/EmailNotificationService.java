@@ -1,7 +1,7 @@
 package com.vrms.application;
 
 import java.util.Properties;
-
+import java.util.logging.Logger;
 import io.github.cdimascio.dotenv.Dotenv;
 import jakarta.mail.Message;
 import jakarta.mail.MessagingException;
@@ -11,6 +11,8 @@ import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
 
 public class EmailNotificationService implements NotificationService {
+    private static final Logger LOGGER =
+        Logger.getLogger(EmailNotificationService.class.getName());
 
     private final String username;
     private final String password;
@@ -52,7 +54,7 @@ public class EmailNotificationService implements NotificationService {
 
             sendEmail(email);
 
-            System.out.println("Email sent successfully to " + recipientEmail);
+           LOGGER.info(() -> "Email sent successfully to " + recipientEmail);
         } catch (MessagingException exception) {
             throw new IllegalStateException("Email could not be sent: " + exception.getMessage(), exception);
         }
