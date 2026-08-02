@@ -26,6 +26,7 @@ import com.vrms.persistence.RentalRepository;
 import com.vrms.persistence.VehicleRepository;
 
 public class Main {
+    private static final String RENTAL_ID_LABEL = "Rental ID: ";
 
     private static final int MAX_RENTAL_DAYS = 30;
 
@@ -158,7 +159,7 @@ public class Main {
             System.out.println(vehicle);
         }
 
-        String rentalId = readRequiredText(input, "Rental ID: ", "Rental ID cannot be empty.");
+        String rentalId = readRequiredText(input, RENTAL_ID_LABEL, "Rental ID cannot be empty.");
         String vehicleId = readAvailableVehicleId(input, availableVehicles);
         Vehicle selectedVehicle = findVehicleById(availableVehicles, vehicleId);
 
@@ -181,7 +182,7 @@ public class Main {
 
             System.out.println();
             System.out.println("Rental created successfully.");
-            System.out.println("Rental ID: " + rental.getRentalId());
+         System.out.println(RENTAL_ID_LABEL + rental.getRentalId());
             System.out.println("Customer: " + rental.getCustomerName());
             System.out.println("Customer email: " + rental.getCustomerEmail());
             System.out.println("Vehicle: " + rental.getVehicle());
@@ -256,7 +257,7 @@ public class Main {
 
             System.out.println();
             System.out.println("Vehicle returned successfully.");
-            System.out.println("Rental ID: " + rental.getRentalId());
+            System.out.println(RENTAL_ID_LABEL + rental.getRentalId());
             System.out.println("Customer: " + rental.getCustomerName());
             System.out.println("Vehicle: " + rental.getVehicle());
             System.out.println("Rental status: " + rental.getStatus());
